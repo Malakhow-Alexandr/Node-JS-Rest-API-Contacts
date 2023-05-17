@@ -8,9 +8,9 @@ const {
 
 const router = express.Router();
 
-router.get("/", controllers.getAll);
+router.get("/", controllers.getContacts);
 
-router.get("/:id", isValidId, controllers.getOneContact);
+router.get("/:id", isValidId, controllers.getContact);
 
 router.post("/", validateBody(addSchema), controllers.addContact);
 

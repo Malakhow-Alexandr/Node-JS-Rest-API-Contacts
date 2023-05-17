@@ -2,12 +2,12 @@ const { Contact } = require("../services/contactService");
 
 const { ctrlWrapper, throwNotFoundError } = require("../helpers");
 
-const getAll = ctrlWrapper(async (req, res) => {
+const getContacts = ctrlWrapper(async (req, res) => {
   const result = await Contact.find();
   res.json(result);
 });
 
-const getOneContact = ctrlWrapper(async (req, res) => {
+const getContact = ctrlWrapper(async (req, res) => {
   const { id } = req.params;
   const result = await Contact.findById(id);
   throwNotFoundError(result);
@@ -41,9 +41,9 @@ const updateFavorite = ctrlWrapper(async (req, res) => {
 });
 
 module.exports = {
-  getAll,
+  getContacts,
   addContact,
-  getOneContact,
+  getContact,
   deleteContact,
   updateContact,
   updateFavorite,
