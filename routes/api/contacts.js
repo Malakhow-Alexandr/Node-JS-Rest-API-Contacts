@@ -2,9 +2,7 @@ const express = require("express");
 
 const controllers = require("../../controllers/contactsControllers");
 const { validateBody, isValidId } = require("../../middlewares");
-const {
-  joiSchemas: { addSchema, updateFavoriteSchema },
-} = require("../../services/contactService");
+const { addSchema, updateFavoriteSchema } = require("../../joiSchemas");
 
 const router = express.Router();
 
