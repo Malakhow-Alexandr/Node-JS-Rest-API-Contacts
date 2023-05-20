@@ -21,6 +21,7 @@ const registerUser = ctrlWrapper(async (req, res) => {
 
 const loginUser = ctrlWrapper(async (req, res) => {
   const { email, password } = req.body;
+
   const user = await User.findOne({ email });
   if (!user) {
     throw new HttpError(401, "invalid data");
@@ -37,12 +38,12 @@ const loginUser = ctrlWrapper(async (req, res) => {
 
   await User.findByIdAndUpdate(user._id, { token });
 
-  res.json({ token });
+  res.json({ token, user: { email, subscription: user.subscription } });
 });
 
 const getCurrent = ctrlWrapper(async (req, res) => {
-  const { email, name } = req.user;
-  res.json({ email, name });
+  const { email, name, subscription } = req.user;
+  res.json({ email, name, subscription });
 });
 
 const logout = ctrlWrapper(async (req, res) => {
@@ -53,9 +54,18 @@ const logout = ctrlWrapper(async (req, res) => {
   });
 });
 
+const updateSubscription = ctrlWrapper(async (req, res) => {
+  const { _id, name, email } = req.user;
+  const { subscription } = req.body;
+  console.log(subscription);
+  await User.findByIdAndUpdate(_id, { subscription: subscription });
+  res.status(201).json({ name, email, subscription });
+});
+
 module.exports = {
   registerUser,
   loginUser,
   getCurrent,
   logout,
+  updateSubscription,
 };
