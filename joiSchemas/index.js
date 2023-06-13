@@ -2,7 +2,7 @@ const {
   contactSchemas: { addSchema, updateFavoriteSchema },
 } = require("./contactsSchema.js");
 const {
-  usersSchema: { registerSchema, loginSchema, subscriptionSchema },
+  usersSchema: { registerSchema, loginSchema, subscriptionSchema, emailSchema },
 } = require("./authSchema.js");
 
 module.exports = {
@@ -11,4 +11,5 @@ module.exports = {
   registerSchema,
   loginSchema,
   subscriptionSchema,
+  emailSchema,
 };
