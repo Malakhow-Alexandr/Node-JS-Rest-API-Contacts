@@ -9,4 +9,4 @@ RUN npm install
 
 EXPOSE 3030
 
-CMD ["node", "server"]
+CMD ["npm", "start"]
