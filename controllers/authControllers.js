@@ -32,7 +32,6 @@ const registerUser = ctrlWrapper(async (req, res) => {
     verificationCode,
   });
 
-  console.log(verificationCode);
 
   const verifyEmail = {
     to: email,
