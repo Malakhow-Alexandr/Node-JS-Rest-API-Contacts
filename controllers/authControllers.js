@@ -1,5 +1,5 @@
 const { User } = require("../models/userModel");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const fs = require("fs/promises");
 const { ctrlWrapper, HttpError } = require("../helpers");
@@ -9,6 +9,7 @@ const path = require("path");
 const Jimp = require("jimp");
 const { nanoid } = require("nanoid");
 
+console.log(bcrypt);
 const { SECRET_KEY, BASE_URL } = process.env;
 const avatarsDir = path.join(__dirname, "../", "public", "avatars");
 
