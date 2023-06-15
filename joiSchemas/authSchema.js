@@ -17,10 +17,15 @@ const subscriptionSchema = Joi.object({
   subscription: Joi.string().valid("starter", "pro", "business").required(),
 });
 
+const emailSchema = Joi.object({
+  email: Joi.string().pattern(emailRegex).required(),
+});
+
 const usersSchema = {
   registerSchema,
   loginSchema,
   subscriptionSchema,
+  emailSchema,
 };
 
 module.exports = {

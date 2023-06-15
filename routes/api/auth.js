@@ -8,12 +8,21 @@ const {
   registerSchema,
   loginSchema,
   subscriptionSchema,
+  emailSchema,
 } = require("../../joiSchemas");
 
 router.post(
   "/register",
   validateBody(registerSchema),
   controllers.registerUser
+);
+
+router.get("/verify/:verificationCode", controllers.verifyEmail);
+
+router.post(
+  "/verify",
+  validateBody(emailSchema),
+  controllers.resendVerifyEmail
 );
 
 router.post("/login", validateBody(loginSchema), controllers.loginUser);
